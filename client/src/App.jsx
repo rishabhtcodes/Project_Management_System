@@ -23,7 +23,7 @@ function AppLayout({ children }) {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar toggleSidebar={() => setSidebarOpen(!sidebarOpen)} showSidebarToggle={true} />
-      <div className="flex flex-1 overflow-hidden h-[calc(100vh-3.5rem)]">
+      <div className="flex flex-1 overflow-hidden">
         <Sidebar isOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
         <main className="flex-1 overflow-y-auto bg-dark-bg relative scrollbar-thin">
           {children}
