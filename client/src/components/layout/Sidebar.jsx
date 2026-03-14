@@ -41,7 +41,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
 
       {/* Sidebar Content */}
       <div 
-        className={`fixed inset-y-0 left-0 top-16 w-64 bg-[#0a0a0c] border-r border-white/5 z-40 transform transition-all duration-300 ease-in-out lg:translate-x-0 lg:static lg:h-[calc(100vh-4rem)] ${
+        className={`fixed inset-y-0 left-0 top-16 w-64 bg-[#0a0a0c] border-r border-white/5 z-40 transform transition-all duration-300 ease-in-out lg:translate-x-0 lg:static lg:h-full ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } flex flex-col`}
       >
@@ -64,7 +64,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
                     to={item.to}
                     end={item.to === "/dashboard"}
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2.5 text-sm font-medium rounded-xl transition-all group ${
+                      `flex items-center px-4 py-2.5 text-sm font-medium rounded-xl transition-all group cursor-pointer ${
                         isActive
                           ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
                           : 'text-slate-400 hover:text-white hover:bg-white/5'
