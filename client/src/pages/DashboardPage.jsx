@@ -8,11 +8,14 @@ import {
 import workspaceService from '../services/workspace.service';
 import boardService from '../services/board.service';
 import Spinner from '../components/ui/Spinner';
+import CreateWorkspaceModal from '../components/modals/CreateWorkspaceModal';
+import { toast } from 'react-toastify';
 
 const DashboardPage = () => {
   const [workspaces, setWorkspaces] = useState([]);
   const [workspaceBoards, setWorkspaceBoards] = useState({});
   const [loading, setLoading] = useState(true);
+  const [showWorkspaceModal, setShowWorkspaceModal] = useState(false);
 
   // Mock data for the Premium Widgets based on the reference image
   const todayTasks = [
@@ -55,6 +58,11 @@ const DashboardPage = () => {
     };
     fetchData();
   }, []);
+
+  const handleWorkspaceCreated = () => {
+    // Basic local refresh logic (ideally trigger refetchData)
+    window.location.reload(); 
+  };
 
   if (loading) {
     return (
@@ -101,7 +109,10 @@ const DashboardPage = () => {
                     <h3 className="text-lg font-bold text-white">Today's tasks</h3>
                     <span className="bg-white/10 text-slate-400 text-[10px] font-bold px-2 py-0.5 rounded-full">3</span>
                  </div>
-                 <button className="text-xs font-bold text-blue-500 hover:text-blue-400 flex items-center">
+                 <button 
+                  onClick={() => toast.info('Task management coming soon!')}
+                  className="text-xs font-bold text-blue-500 hover:text-blue-400 flex items-center"
+                 >
                     Manage <ChevronRight size={14} className="ml-0.5" />
                  </button>
               </div>
@@ -117,7 +128,11 @@ const DashboardPage = () => {
                           <p className="text-[10px] font-medium text-slate-500">{task.project}</p>
                        </div>
                     </div>
-                    <CheckCircle2 size={16} className="text-slate-600 hover:text-blue-500 transition-colors" />
+                    <CheckCircle2 
+                      size={16} 
+                      className="text-slate-600 hover:text-blue-500 transition-colors cursor-pointer" 
+                      onClick={(e) => { e.stopPropagation(); toast.success('Task marked as done!'); }}
+                    />
                   </div>
                 ))}
               </div>
@@ -130,7 +145,12 @@ const DashboardPage = () => {
                     <h3 className="text-lg font-bold text-white">Today's meetings</h3>
                     <span className="bg-white/10 text-slate-400 text-[10px] font-bold px-2 py-0.5 rounded-full">6</span>
                  </div>
-                 <button className="text-xs font-bold text-blue-500 hover:text-blue-400">View all</button>
+                 <button 
+                  onClick={() => toast.info('Meetings overview coming soon!')}
+                  className="text-xs font-bold text-blue-500 hover:text-blue-400"
+                 >
+                   View all
+                 </button>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {meetings.map((m, idx) => (
@@ -281,7 +301,10 @@ const DashboardPage = () => {
       <div className="mt-16 mb-8">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold text-white tracking-tight">Your Workspaces</h2>
-          <button className="glass px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center hover:bg-white/10 transition-all">
+          <button 
+            onClick={() => setShowWorkspaceModal(true)}
+            className="glass px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center hover:bg-white/10 transition-all cursor-pointer z-20"
+          >
             <Plus size={16} className="mr-2" /> CREATE WORKSPACE
           </button>
         </div>
@@ -320,6 +343,12 @@ const DashboardPage = () => {
           ))}
         </div>
       </div>
+
+      <CreateWorkspaceModal 
+        isOpen={showWorkspaceModal} 
+        onClose={() => setShowWorkspaceModal(false)}
+        onSuccess={handleWorkspaceCreated}
+      />
     </div>
   );
 };
