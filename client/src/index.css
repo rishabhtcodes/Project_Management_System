@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: "Inter", "system-ui", "-apple-system", "sans-serif";
+  
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;
   --color-primary-200: #bfdbfe;
@@ -13,16 +14,42 @@
   --color-primary-800: #1e40af;
   --color-primary-900: #1e3a8a;
   --color-primary-950: #172554;
+
+  /* Premium Dark Palette */
+  --color-dark-bg: #0a0a0c;
+  --color-dark-card: #141417;
+  --color-dark-border: #242428;
+  --color-dark-text-muted: #94a3b8;
+  --color-dark-glass: rgba(20, 20, 23, 0.8);
+}
+
+@utility glass {
+  background: var(--color-dark-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-dark-border);
+}
+
+@utility glass-white {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility shadow-premium {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 @layer base {
   body {
-    @apply antialiased text-slate-800 bg-slate-50;
+    @apply antialiased text-slate-200 bg-[#0a0a0c];
+    font-family: var(--font-sans);
   }
 }
 
 @layer components {
-  /* Scrollbar override for boards */
+  /* Scrollbar override for dark theme */
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
@@ -31,18 +58,26 @@
     scrollbar-width: none;
   }
   
-  /* Generic thin scrollbar */
   .scrollbar-thin::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
   .scrollbar-thin::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    @apply bg-slate-300/70 rounded-full;
+    @apply bg-white/10 rounded-full;
   }
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-400;
+    @apply bg-white/20;
   }
+}
+
+/* Custom Gradients */
+.bg-gradient-premium {
+  background: linear-gradient(135deg, #141417 0%, #0a0a0c 100%);
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
 }
