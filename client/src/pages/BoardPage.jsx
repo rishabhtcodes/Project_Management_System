@@ -255,24 +255,31 @@ const BoardPage = () => {
       style={{ backgroundColor: board.background || '#0079bf' }}
     >
       {/* Board Header Overlay */}
-      <div className="bg-black/20 backdrop-blur-sm px-6 py-3 flex items-center justify-between z-10 sticky top-0">
-        <div className="flex items-center space-x-4">
-          <h1 className="text-xl font-bold text-white tracking-wide drop-shadow-sm">{board.title}</h1>
-          <button className="text-white/80 hover:text-white bg-white/10 hover:bg-white/20 p-1.5 rounded-md backdrop-blur-md transition-colors">
+      <div className="glass px-8 py-4 flex items-center justify-between z-10 sticky top-0 shadow-premium border-x-0 border-t-0 border-b-white/5 mx-6 mt-6 rounded-[2rem]">
+        <div className="flex items-center space-x-6">
+          <div className="flex flex-col">
+             <h1 className="text-2xl font-black text-white tracking-tighter drop-shadow-lg leading-tight">{board.title}</h1>
+             <p className="text-[10px] font-black text-white/60 uppercase tracking-[2px] mt-0.5">Project Board</p>
+          </div>
+          <button className="text-white/60 hover:text-white bg-white/5 hover:bg-white/10 p-2.5 rounded-xl backdrop-blur-md transition-all border border-white/5">
             <Settings size={18} />
           </button>
         </div>
         
-        <div className="flex items-center space-x-4">
-          <div className="hidden sm:flex items-center -space-x-2">
+        <div className="flex items-center space-x-6">
+          <div className="hidden md:flex items-center -space-x-3">
             {board.members?.map((m, i) => (
-              <Avatar key={i} user={m.user} className="ring-2 ring-black/20 shadow-sm" />
+              <Avatar key={i} user={m.user} className="ring-4 ring-[#141417] shadow-xl w-10 h-10" />
             ))}
+            <div className="w-10 h-10 rounded-full bg-blue-600 border-4 border-[#141417] flex items-center justify-center text-[10px] font-black text-white cursor-pointer hover:scale-110 transition-transform">
+               +
+            </div>
           </div>
-          <button className="flex items-center text-white/90 bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-md text-sm font-medium transition-colors shadow-sm ring-1 ring-white/10">
+          <div className="h-8 w-[1px] bg-white/10 hidden md:block"></div>
+          <button className="flex items-center text-white font-bold bg-blue-600 hover:bg-blue-500 px-5 py-2.5 rounded-2xl text-xs transition-all shadow-lg shadow-blue-500/20">
             <Users size={16} className="mr-2" /> Share
           </button>
-          <button className="flex items-center text-white/90 bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ring-1 ring-white/10">
+          <button className="flex items-center text-white/80 bg-white/5 hover:bg-white/10 px-5 py-2.5 rounded-2xl text-xs font-bold transition-all border border-white/5">
             <Filter size={16} className="mr-2" /> Filter
           </button>
         </div>
