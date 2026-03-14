@@ -55,8 +55,8 @@ const Navbar = ({ toggleSidebar, showSidebarToggle = false }) => {
           </button>
         </div>
 
-        <button className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 relative transition-all">
-          <Bell size={20} />
+        <button className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 relative transition-all group active:scale-95">
+          <Bell size={20} className="group-hover:rotate-12 transition-transform" />
           <span className="absolute top-2.5 right-2.5 h-2 w-2 rounded-full bg-red-500 border-2 border-[#141417]"></span>
         </button>
 
