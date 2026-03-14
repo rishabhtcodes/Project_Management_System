@@ -25,7 +25,7 @@ function AppLayout({ children }) {
       <Navbar toggleSidebar={() => setSidebarOpen(!sidebarOpen)} showSidebarToggle={true} />
       <div className="flex flex-1 overflow-hidden h-[calc(100vh-3.5rem)]">
         <Sidebar isOpen={sidebarOpen} closeSidebar={() => setSidebarOpen(false)} />
-        <main className="flex-1 overflow-y-auto bg-slate-50 relative">
+        <main className="flex-1 overflow-y-auto bg-dark-bg relative scrollbar-thin">
           {children}
         </main>
       </div>
@@ -35,7 +35,7 @@ function AppLayout({ children }) {
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col font-sans text-slate-800 bg-white">
+    <div className="min-h-screen flex flex-col font-sans text-slate-200 bg-dark-bg">
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
       <Routes>
         {/* Public Routes */}
