@@ -2,11 +2,15 @@
 node_modules/
 npm-debug.log
 yarn-error.log
+package-lock.json
+yarn.lock
 
 # Build files
 client/dist/
 mobile/web-build/
 mobile/.expo/
+mobile/dist/
+*.tsbuildinfo
 
 # Environment Variables
 .env
@@ -14,6 +18,8 @@ mobile/.expo/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
+server/.env
 
 # Logs
 logs
@@ -24,6 +30,16 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.code-workspace
+*.iml
+
 # OS specific
 .DS_Store
 .DS_Store?
@@ -32,3 +48,25 @@ lerna-debug.log*
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Vercel
+.vercel/
+.vercel
+
+# Expo Mobile
+.expo-shared/
+.expo/
+dist/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.cache/
+temp/
+tmp/
+*.bak
+*.swp
+.eslintcache
+
